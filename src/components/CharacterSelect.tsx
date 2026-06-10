@@ -103,10 +103,10 @@ export const CharacterSelect: React.FC<CharacterSelectProps> = ({
             >
               <div className="font-semibold flex items-center gap-1 mb-1 text-[#f87171]">
                 <Star className="w-3 h-3 text-red-400" />
-                薫風お札 / Homing Leaves
+                追尾お札 / Homing Leaves
               </div>
               <p className="text-[10px] text-slate-300 leading-snug">
-                薫る緑風に乗って敵をお札が自動追尾。敵を狙い撃ちしつつ、回避に集中したい状況で極めて有利。
+                お札が敵を自動追尾。敵を狙い撃ちしつつ、回避に集中したい状況で有効的。
               </p>
             </button>
 
@@ -123,10 +123,10 @@ export const CharacterSelect: React.FC<CharacterSelectProps> = ({
             >
               <div className="font-semibold flex items-center gap-1 mb-1 text-[#f87171]">
                 <Zap className="w-3 h-3 text-red-400" />
-                烈風ニードル / Gale Needles
+                スピア / Gale Needles
               </div>
               <p className="text-[10px] text-slate-300 leading-snug">
-                神速の疾風ニードルを正面に高密度連射。命中範囲は狭い代わりに強大な破壊力を発揮。
+                正面に高密度連射。命中範囲は狭い代わりに強大な破壊力を発揮。
               </p>
             </button>
           </>
@@ -148,7 +148,7 @@ export const CharacterSelect: React.FC<CharacterSelectProps> = ({
                 極光レイ / Astral Laser
               </div>
               <p className="text-[10px] text-slate-300 leading-snug">
-                前方を一瞬で貫通する高エネルギーな極光光条線。ボスを短時間で突破できる。
+                前方を一瞬で貫通する高エネルギーで、ボスを短時間で突破できる。
               </p>
             </button>
 

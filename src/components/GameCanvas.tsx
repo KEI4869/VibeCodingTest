@@ -1733,7 +1733,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
               onClick={initGame}
               className="py-3 px-8 text-sm md:text-base font-bold uppercase tracking-widest bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg shadow-lg shadow-emerald-950/50 transition-all duration-200 transform hover:-translate-y-0.5"
             >
-              Start Mission / 拝殿へ
+              Start Mission / スタート
             </button>
           </div>
         )}
@@ -1791,7 +1791,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
               MISSION CLEARED!
             </h2>
             <p className="text-sm font-bold text-emerald-300 mb-2 tracking-widest">
-              神格降臨・幻想郷の平和は守り抜かれた
+              幻想郷の平和は守り抜かれた
             </p>
             <div className="bg-black/40 border border-emerald-900 p-4 rounded mb-8 max-w-sm text-xs font-mono text-left space-y-1.5 text-gray-300">
               <p>🎯 Score: <strong className="text-white">{currentScore.toLocaleString()}</strong></p>

@@ -5,7 +5,7 @@
 
 import React from "react";
 import { DifficultySettings, DifficultyLevel } from "../types";
-import { Sliders, Shield, Heart, Zap, Crosshair, Award } from "lucide-react";
+import { Sliders, Shield, Heart, Zap, Crosshair, Award, Move } from "lucide-react";
 
 interface DifficultyConfigProps {
   settings: DifficultySettings;
@@ -24,6 +24,7 @@ export const PRESETS: Record<Exclude<DifficultyLevel, "custom">, DifficultySetti
     bombCancelRadius: 280,
     autoCollectHeight: 220, // Lower line, easier POC
     itemFallSpeedMultiplier: 0.8,
+    playerFocusedSpeed: 2.2,
   },
   normal: {
     level: "normal",
@@ -36,6 +37,7 @@ export const PRESETS: Record<Exclude<DifficultyLevel, "custom">, DifficultySetti
     bombCancelRadius: 240,
     autoCollectHeight: 180,
     itemFallSpeedMultiplier: 1.0,
+    playerFocusedSpeed: 2.2,
   },
   hard: {
     level: "hard",
@@ -48,6 +50,7 @@ export const PRESETS: Record<Exclude<DifficultyLevel, "custom">, DifficultySetti
     bombCancelRadius: 200,
     autoCollectHeight: 140, // Higher line, harder to autocollect
     itemFallSpeedMultiplier: 1.2,
+    playerFocusedSpeed: 2.2,
   },
   lunatic: {
     level: "lunatic",
@@ -60,6 +63,7 @@ export const PRESETS: Record<Exclude<DifficultyLevel, "custom">, DifficultySetti
     bombCancelRadius: 160,
     autoCollectHeight: 100, // Very high POC line
     itemFallSpeedMultiplier: 1.4,
+    playerFocusedSpeed: 2.2,
   },
 };
 
@@ -262,12 +266,32 @@ export const DifficultyConfig: React.FC<DifficultyConfigProps> = ({ settings, on
             自機がこの境界線より上にいくと、画面上の全アイテムが自動的に高速回収されます。
           </p>
         </div>
+
+        {/* Player Focused Speed (低速移動速度) */}
+        <div className="bg-[#2d1216] p-3 rounded border border-[#521115]">
+          <div className="flex justify-between items-center mb-1">
+            <span className="flex items-center gap-1.5 text-[#ffb0b0]" id="label-focused-speed">
+              <Move className="w-4 h-4 text-sky-400" /> Focus Speed (低速移動速度):
+            </span>
+            <span className="font-mono text-[#38bdf8] font-semibold">{settings.playerFocusedSpeed.toFixed(1)} px/f</span>
+          </div>
+          <input
+            id="input-focused-speed"
+            type="range"
+            min="0.8"
+            max="4.0"
+            step="0.1"
+            value={settings.playerFocusedSpeed}
+            onChange={(e) => updateField("playerFocusedSpeed", parseFloat(e.target.value))}
+            className="w-full h-1.5 bg-[#401217] rounded-lg appearance-none cursor-pointer accent-sky-400"
+          />
+          <p className="text-[10px] text-[#cca1a1] mt-1">
+            Shiftキーを押している（低速移動・低速ショット）ときの自機移動速度。低いほど細かい回避がしやすくなります。
+          </p>
+        </div>
       </div>
 
-      <div className="mt-4 p-2 bg-[#260a0f] text-[10px] border border-[#ff3b3b]/20 text-[#ffb8b8] leading-tight rounded">
-        <strong>💡 風神録（MoF）ボムシステムの完全再現: </strong>
-        ボムアイテムはなく、パワー（Power）を <strong>{settings.bombPowerCost.toFixed(2)}</strong> 消費して「霊撃（ボム）」を放ちます！パワーが足りないとボムを出せないので、落ちてくるＰアイテムの回収が生き残る鍵となります！
-      </div>
+
     </div>
   );
 };

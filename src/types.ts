@@ -11,6 +11,7 @@ export interface DifficultySettings {
   bombCancelRadius: number;    // in pixels
   autoCollectHeight: number;   // height on Y axis (0 is top, e.g. 180 is upper 1/3)
   itemFallSpeedMultiplier: number;
+  playerFocusedSpeed: number;   // moving speed during focus mode (slow movement)
 }
 
 export type ShotType = "homing" | "needle" | "laser" | "spread";

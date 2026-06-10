@@ -114,7 +114,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
   const gameLoopRef = useRef<number | null>(null);
 
   // Entities Tracking Refs (avoiding state thrashing in 60fps loop)
-  const playerRef = useRef({ x: 220, y: 500, vx: 0, vy: 0, width: 32, height: 48, speedNormal: 4.8, speedFocused: 2.2, shootCooldown: 0, invincibleFrames: 0 });
+  const playerRef = useRef({ x: 220, y: 500, vx: 0, vy: 0, width: 32, height: 48, speedNormal: 4.8, speedFocused: settings.playerFocusedSpeed || 2.2, shootCooldown: 0, invincibleFrames: 0 });
   const bossRef = useRef({ x: 220, y: 120, vx: 1.2, vy: 0, waveTimer: 0, angle: 0, moveTargetX: 220, moveCooldown: 60 });
   const playerBulletsRef = useRef<{ x: number; y: number; vx: number; vy: number; damage: number; color: string; width: number; height: number }[]>([]);
   const enemyBulletsRef = useRef<Bullet[]>([]);
@@ -212,7 +212,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
       width: 32,
       height: 48,
       speedNormal: 4.8,
-      speedFocused: 2.2,
+      speedFocused: settings.playerFocusedSpeed || 2.2,
       shootCooldown: 0,
       invincibleFrames: 90, // Start with grace shield
     };
@@ -534,7 +534,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
       // --- 2. PLAYER INTENT (INPUTS & MOTION) ---
       const activeKeys = keysRef.current;
       const isFocused = activeKeys["ShiftLeft"] || activeKeys["ShiftRight"];
-      const currentSpeed = isFocused ? playerRef.current.speedFocused : playerRef.current.speedNormal;
+      const currentSpeed = isFocused ? (settings.playerFocusedSpeed || playerRef.current.speedFocused) : playerRef.current.speedNormal;
 
       let dx = 0;
       let dy = 0;
@@ -1778,7 +1778,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
               onClick={initGame}
               className="py-3 px-8 font-bold bg-red-600 hover:bg-red-500 text-white rounded-lg shadow-lg transition"
             >
-              Retry Challenge / 奇跡を信じて再挑戦
+              リトライ
             </button>
           </div>
         )}

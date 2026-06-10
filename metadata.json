@@ -1,0 +1,6 @@
+{
+  "name": "弾幕シューティングゲーム",
+  "description": "高速弾幕シューティングゲーム。パワーを集めてボムに昇華し、高難易度のボスを攻略せよ！",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
